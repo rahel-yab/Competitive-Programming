@@ -1,12 +1,10 @@
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
-        nums.sort()
         def validate(mid):
-            curr = nums.copy()
             c = 0
-            while curr and curr[-1] > mid:
-                c += ceil(curr[-1] / mid) - 1
-                curr.pop()
+            for num in nums:
+                if num > mid:
+                    c += ceil(num/mid) -1
 
             return c <= maxOperations
 
